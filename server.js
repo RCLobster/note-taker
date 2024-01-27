@@ -32,14 +32,13 @@ res.sendFile(path.join(__dirname, '/public/notes.html'))
 // GET route to return data in db.json
 app.get('/api/notes', (req, res) => {
     console.log(`${req.method} request received`);
-    //let notes = require('./db/db.json');
-    //return res.json(notes);
-
+    // read the current data in db.json
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if(err){
             console.error(err);
             return;
         } else {
+            // if no errors, parse the data
             console.log(`Retreiving db.json`);
             const returnedData = JSON.parse(data);
             res.json(returnedData);
@@ -92,10 +91,6 @@ app.post('/api/notes', (req, res) => {
     } else {
         res.status(500).json('Error in posting review');
     }
-});
-
-app.delete('/api/notes/:id', (req, res) => {
-    console.log(`Note with id ${req.params.id} deleted`);
 });
 
 app.listen(PORT, () =>
