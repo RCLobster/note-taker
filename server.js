@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 //const api = require('./routes/index.js');
+//const index = require('./public/assets/js/index');
+const uuid = require('./helpers/uuid');
 
 
 const PORT = 3001;
@@ -32,15 +34,20 @@ res.sendFile(path.join(__dirname, '/public/notes.html'))
 // GET route to return data in db.json
 app.get('/api/notes', (req, res) => {
     console.log(`${req.method} request received`);
-    let notes = require('./db/db.json');
-    return res.json(notes);
+    //let notes = require('./db/db.json');
+    //return res.json(notes);
 
-    // fs.readFile('./db/db.json', 'utf8', (err, data) => {
-    //     err
-    //         ? console.error(err)
-    //         : console.log(`Retrieved data`);
-    // });
-    
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if(err){
+            console.error(err);
+            return;
+        } else {
+            console.log(`Retreiving db.json`);
+            const returnedData = JSON.parse(data);
+            res.json(returnedData);
+        }
+        
+    });
 });
 
 // POST route to add new notes into db.json
@@ -55,7 +62,8 @@ app.post('/api/notes', (req, res) => {
         // then create a new object named newNote with the passed data
         const newNote = {
             title,
-            text
+            text,
+            id: uuid(),
         };
 
         // read the current contents of db.json

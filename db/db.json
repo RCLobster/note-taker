@@ -1,34 +1,17 @@
 [
     {
-        "title": "New Note!",
-        "text": "cool note man"
+        "title": "Another note",
+        "text": "this one is new",
+        "id": "c278"
     },
     {
-        "title": "Another Note!",
-        "text": "even cooler note man"
+        "title": "new note",
+        "text": "this one is not too\n",
+        "id": "735e"
     },
     {
-        "title": "Coolest Note",
-        "text": "whoa this note is cool"
-    },
-    {
-        "title": "Sick Note",
-        "text": "sick not bro"
-    },
-    {
-        "title": "So many Notes",
-        "text": "got a lot of notes here now"
-    },
-    {
-        "title": "Anotha one",
-        "text": "lol meme"
-    },
-    {
-        "title": "more more more",
-        "text": "notes notes notes"
-    },
-    {
-        "title": "Final note?",
-        "text": "please work"
+        "title": "IT WORKS??",
+        "text": "I cant believe IT WORKS",
+        "id": "7e56"
     }
 ]
